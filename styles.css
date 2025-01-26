@@ -30,6 +30,8 @@ label, input, textarea, button {
 }
 
 button {
+    width:300px;
+    
     background-color: #007bff;
     color: white;
     border: none;
