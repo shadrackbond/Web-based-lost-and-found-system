@@ -1,41 +1,11 @@
-document.getElementById('reportForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const itemType = document.getElementById('itemType').value;
-    const description = document.getElementById('description').value;
+const container = document.getElementById('container');
+const registerBtn = document.getElementById('register');
+const loginBtn = document.getElementById('login');
 
-    // Send data to back-end API
-    fetch('/api/report', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ itemType, description })
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Item reported successfully!');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+registerBtn.addEventListener('click', () => {
+  container.classList.add('active');
 });
 
-document.getElementById('searchInput').addEventListener('input', function() {
-    const query = this.value;
-
-    // Fetch search results from back-end API
-    fetch(`/api/search?query=${query}`)
-    .then(response => response.json())
-    .then(data => {
-        const resultsContainer = document.getElementById('searchResults');
-        resultsContainer.innerHTML = '';
-        data.results.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `${item.itemType}: ${item.description}`;
-            resultsContainer.appendChild(li);
-        });
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+loginBtn.addEventListener('click', () => {
+  container.classList.remove('active');
 });
